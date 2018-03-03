@@ -4,7 +4,12 @@
 ./composer.phar install --prefer-dist
 yarn install
 ```
+Start a node socket daemon on port 3000
+> ```bash
+> $ node sockets/start.js
+> ```
 
+Then, in a different terminal start the php application
 > ```bash
 > $ composer run --timeout=0 serve
 > ```
