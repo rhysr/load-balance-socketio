@@ -18,10 +18,6 @@ tags
 
 
 #### zendframework ####
-# Composer files
-composer.phar
-vendor/
-
 # Local configs
 config/autoload/*.local.php
 

@@ -1,9 +1,7 @@
 ## Getting Started
 
 ```bash
-./composer.phar install --prefer-dist
-```
-
+Then, in a different terminal start the php application
 > ```bash
 > $ composer run --timeout=0 serve
 > ```
