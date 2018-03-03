@@ -1,0 +1,8 @@
+{
+  "name": "load-balance-socketio",
+  "version": "1.0.0",
+  "description": "Load balancing socketio",
+  "main": "index.js",
+  "author": "rhysr <rhys@mega-city-one.co.uk>",
+  "license": "MIT"
+}
