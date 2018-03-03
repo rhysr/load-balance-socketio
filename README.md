@@ -2,6 +2,7 @@
 
 ```bash
 ./composer.phar install --prefer-dist
+yarn install
 ```
 
 > ```bash
