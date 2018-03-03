@@ -1,5 +1,10 @@
 ## Getting Started
 
+Start a node socket daemon on port 3000
+```bash
+node sockets/start.js
+```
+
 ```bash
 Then, in a different terminal start the php application
 > ```bash
