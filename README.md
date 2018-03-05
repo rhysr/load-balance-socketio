@@ -1,11 +1,17 @@
 ## Getting Started
 
-Start a node socket daemon on port 3000
+Get docker-compose from [here](https://docs.docker.com/compose/install/) if you don't want sudo some random script...
+
+Build nginx and node docker images
 ```bash
-node sockets/start.js
+sudo ./docker-compose build
 ```
 
+Start nginx and node socketio containers
 ```bash
+sudo ./docker-compose up
+```
+
 Then, in a different terminal start the php application
 > ```bash
 > $ composer run --timeout=0 serve

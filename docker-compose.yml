@@ -1,0 +1,31 @@
+version: '3'
+services:
+  loadbalancer:
+    build:
+      context:  .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "3000:80"
+    links:
+      - socket01
+      - socket02
+  socket01:
+    build:
+      context:  .
+      dockerfile: Dockerfile-socketio
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["node", "/app/sockets/start.js"]
+
+  socket02:
+    build:
+      context:  .
+      dockerfile: Dockerfile-socketio
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["node", "/app/sockets/start.js"]
+
