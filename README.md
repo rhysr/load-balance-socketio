@@ -1,13 +1,23 @@
 ## Getting Started
 
+Build nginx and node docker images
+
+Get docker-compose from [here](https://docs.docker.com/compose/install/) if you don't want sudo some random script...
+```bash
+sudo ./docker-compose build
+```
+
+Install package dependencies
+You'll need [yarn](https://yarnpkg.com/lang/en/docs/install/)
 ```bash
 ./composer.phar install --prefer-dist
 yarn install
 ```
-Start a node socket daemon on port 3000
-> ```bash
-> $ node sockets/start.js
-> ```
+
+Start nginx and node socketio containers
+```bash
+sudo ./docker-compose up
+```
 
 Then, in a different terminal start the php application
 > ```bash
