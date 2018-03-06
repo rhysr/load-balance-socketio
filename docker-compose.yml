@@ -18,6 +18,8 @@ services:
     expose:
       - "3000"
     command: ["node", "/app/sockets/start.js"]
+    environment:
+      - LABEL=socket01
 
   socket02:
     build:
@@ -28,4 +30,5 @@ services:
     expose:
       - "3000"
     command: ["node", "/app/sockets/start.js"]
-
+    environment:
+      - LABEL=socket02
