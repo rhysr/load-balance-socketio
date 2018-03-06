@@ -9,8 +9,12 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <h1>Load balanced sockets server daemons</h1>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-4">
-        <h1>All the sockets are running as one background process</h1>
         {% for i in 1..10 %}
         <p>Socket #{{i}} has connected to node process <span id="socket-{{i}}"><i class="fa fa-spinner fa-spin"></i></span></p>
         {% endfor %}
@@ -26,7 +30,7 @@ var sockets = [];
 for (let i = 1; i <= 10; i++) {
     let socket = io('http://localhost:3000');
     socket.on('news', function (data) {
-        $('#socket-' + i).html(data.pid);
+        $('#socket-' + i).html(data.socket_name);
         console.log(data);
     });
     sockets.push(socket);
