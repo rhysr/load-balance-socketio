@@ -1,4 +1,8 @@
-## Getting Started
+# How do you load balance socket.io backend instances???
+
+`¯\_(ツ)_/¯`
+
+## Setup
 
 Build nginx and node docker images
 
@@ -25,7 +29,7 @@ Then, in a different terminal start the php application
 > ```
 You can then browse to http://localhost:8080.
 
-# Load balancing
+## Load balancing
 Each socket will connect to a backend node socket daemon.
 The name of the socket process will be reported in the UI.
 
@@ -35,12 +39,14 @@ In order to provide an even distribution of client amongst the backend servers, 
 2. Instead of using the ip as the backend stickiness sharding key, we can now use the Sec-WebSocket-Key header.  This is unique to each connection so should provide even distribution of backend server connections, which is far better than sharding by IP.
 
 
-## Application Development Mode Tool
+## Expressive skeleton setup noise
+TODO: remove
+### Application Development Mode Tool
 
 This skeleton comes with [zf-development-mode](https://github.com/zfcampus/zf-development-mode).
 It provides a composer script to allow you to enable and disable development mode.
 
-### To enable development mode
+#### To enable development mode
 
 **Note:** Do NOT run development mode on your production server!
 
@@ -52,19 +58,19 @@ $ composer development-enable
 allow safely updating dependencies and ensuring any new configuration is picked
 up by your application.
 
-### To disable development mode
+#### To disable development mode
 
 ```bash
 $ composer development-disable
 ```
 
-### Development mode status
+#### Development mode status
 
 ```bash
 $ composer development-status
 ```
 
-## Configuration caching
+### Configuration caching
 
 By default, the skeleton will create a configuration cache in
 `data/config-cache.php`. When in development mode, the configuration cache is
