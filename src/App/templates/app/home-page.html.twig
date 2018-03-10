@@ -29,7 +29,11 @@
 
 var sockets = [];
 for (let i = 1; i <= {{ socketLimit }}; i++) {
-    let socket  = io('ws://' + window.location.hostname + ':3000');
+    let socket  = io('ws://' + window.location.hostname + ':3000', {
+        // Only use websockets, as the upgrade from long polling
+        // is hard to stickily load balance
+        transports: ['websocket']
+    });
     let domNode = document.getElementById('socket-' + i);
 
     socket.on('connect', () => {

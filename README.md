@@ -19,21 +19,14 @@ Then, in a different terminal start the php application
 You can then browse to http://localhost:8080.
 
 # Load balancing
-Each socket will connect to a backend node socket daemon
+Each socket will connect to a backend node socket daemon.
 The name of the socket process will be reported in the UI.
 
-The load balancing proxy uses the ip as a consistent backend target.
-So, to see different backend proceses being used, you have to the view the app
-from different IPs.
+In order to provide an even distribution of client amongst the backend servers, two things have been done.
 
-This is because Socket.io initially establishes a long polling request, which it
-then upgrades to a better connection. 
-https://socket.io/docs/client-api/#with-websocket-transport-only
+1. The clients will only connect using websockets. Socket.io initially establishes a long polling connection which it then upgrades to a websocket connection [1](https://socket.io/docs/client-api/#with-websocket-transport-only). Currently, I'm not sure of a way to reliably ensure that the "Upgrade" request will hit the correct backend server.
+2. Instead of using the ip as the backend stickiness sharding key, we can now use the Sec-WebSocket-Key header.  This is unique to each connection so should provide even distribution of backend server connections, which is far better than sharding by IP.
 
-Ideally, we'd want the backend socket "stickiness" to be per client socket.
-We need some way of identifying an individual socket connection, or use pure 
-websockets without the long polling request and load balance using the 
-Sec-WebSocket-Key header
 
 ## Application Development Mode Tool
 
