@@ -13,9 +13,10 @@
         <h1>Load balanced sockets server daemons</h1>
     </div>
 </div>
+{% set socketLimit = 10 %}
 <div class="row">
     <div class="col-md-4">
-        {% for i in 1..10 %}
+        {% for i in 1..socketLimit %}
         <p>Socket #{{i}} has connected to node process <span id="socket-{{i}}"><i class="fa fa-spinner fa-spin"></i></span></p>
         {% endfor %}
         <p>
@@ -27,10 +28,21 @@
 <script>
 
 var sockets = [];
-for (let i = 1; i <= 10; i++) {
-    let socket = io('http://localhost:3000');
-    socket.on('news', function (data) {
-        $('#socket-' + i).html(data.socket_name);
+for (let i = 1; i <= {{ socketLimit }}; i++) {
+    let socket  = io('ws://' + window.location.hostname + ':3000');
+    let domNode = document.getElementById('socket-' + i);
+
+    socket.on('connect', () => {
+        domNode.innerHTML = 'Connected';
+    });
+    socket.on('connect_error', () => {
+        domNode.innerHTML = 'Connection error';
+    });
+    socket.on('disconnect', () => {
+        domNode.innerHTML = 'Disconnected';
+    });
+    socket.on('news', (data) => {
+        domNode.innerHTML = data.socket_name;
         console.log(data);
     });
     sockets.push(socket);
