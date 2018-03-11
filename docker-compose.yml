@@ -45,6 +45,48 @@ services:
     links:
       - redis
 
+  socket03:
+    build:
+      context:  .
+      dockerfile: Dockerfile-socketio
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["node", "/app/sockets/start.js"]
+    environment:
+      - LABEL=SocketServer03
+    links:
+      - redis
+
+  socket04:
+    build:
+      context:  .
+      dockerfile: Dockerfile-socketio
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["node", "/app/sockets/start.js"]
+    environment:
+      - LABEL=SocketServer04
+    links:
+      - redis
+
+  socket05:
+    build:
+      context:  .
+      dockerfile: Dockerfile-socketio
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["node", "/app/sockets/start.js"]
+    environment:
+      - LABEL=SocketServer05
+    links:
+      - redis
+
   redis:
     image: redis:3.2
     volumes:
