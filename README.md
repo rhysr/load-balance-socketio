@@ -18,15 +18,11 @@ You'll need [yarn](https://yarnpkg.com/lang/en/docs/install/)
 yarn install
 ```
 
-Start nginx and node socketio containers
+Start nginx, php fpm, redis, and node socketio containers
 ```bash
 sudo ./docker-compose up
 ```
 
-Then, in a different terminal start the php application
-> ```bash
-> $ composer run --timeout=0 serve
-> ```
 You can then browse to http://localhost:8080.
 
 ## Load balancing
