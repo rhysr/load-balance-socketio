@@ -19,7 +19,7 @@ services:
       - "3000"
     command: ["node", "/app/sockets/start.js"]
     environment:
-      - LABEL=socket01
+      - LABEL=SocketServer01
     links:
       - redis
 
@@ -33,7 +33,7 @@ services:
       - "3000"
     command: ["node", "/app/sockets/start.js"]
     environment:
-      - LABEL=socket02
+      - LABEL=SocketServer02
     links:
       - redis
   redis:
