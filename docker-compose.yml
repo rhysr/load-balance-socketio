@@ -5,7 +5,6 @@ services:
       context:  .
       dockerfile: Dockerfile-nginx
     ports:
-      - "3000:3000"
       - "8080:80"
     volumes:
         - ./config:/var/www/html/config
