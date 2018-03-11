@@ -11,15 +11,11 @@ Build nginx and node docker images
 sudo ./docker-compose build
 ```
 
-Start nginx and node socketio containers
+Start nginx, php fpm, redis, and node socketio containers
 ```bash
 sudo ./docker-compose up
 ```
 
-Then, in a different terminal start the php application
-> ```bash
-> $ composer run --timeout=0 serve
-> ```
 You can then browse to http://localhost:8080.
 
 ## Load balancing
