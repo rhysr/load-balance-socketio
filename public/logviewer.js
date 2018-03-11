@@ -7,8 +7,11 @@ const addLog = (message) => {
     logNode.insertBefore(messageNode, logNode.firstChild);
 };
 
+
+const target = 'ws://' + location.hostname+(location.port ? ':'+location.port: '');
+
 const socket = io(
-    'ws://' + window.location.hostname + ':3000', {
+    target, {
         // Only use websockets, as the upgrade from long polling
         // is hard to stickily load balance
         transports: ['websocket']
