@@ -38,6 +38,7 @@ class ConfigProvider
             ],
             'factories'  => [
                 Action\HomePageAction::class => Action\HomePageFactory::class,
+                Action\SocketUserAction::class => Action\SocketUserFactory::class,
             ],
         ];
     }

@@ -29,4 +29,5 @@
 /** @var \Zend\Expressive\Application $app */
 
 $app->get('/', App\Action\HomePageAction::class, 'home');
+$app->get('/socket-user', App\Action\SocketUserAction::class, 'socket-user');
 $app->get('/api/ping', App\Action\PingAction::class, 'api.ping');

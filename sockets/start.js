@@ -16,12 +16,20 @@ const label = process.env.LABEL;
 const io = socketio(server);
 io.adapter(redisAdapter({ host: 'redis', port: 6379 }));
 
+const pushLog = (message) => {
+    io.to('logs').emit('log', message);
+};
+
 io.on('connection', (socket) => {
-    socket.emit('news', { socket_name: label });
-    socket.on('socket-log', (data) => {
-        let msg = 'Socket ' + data.name + ' is connected to server ' + label;
-        socket.broadcast.emit('global-log', msg);
+    // Tell socket which server it's connected to
+    // Only useful to visualise load balancing
+    socket.emit('connection-ack', { server: label });
+
+    // Sign up any sockets that want logs
+    socket.on('log-subscribe', () => {
+        socket.join('logs');
     });
+    pushLog(`${socket.id} has connected to ${label}`);
 });
 
 server.listen(port, (err) => {
