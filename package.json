@@ -6,6 +6,7 @@
   "author": "rhysr <rhys@mega-city-one.co.uk>",
   "license": "MIT",
   "dependencies": {
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "socket.io-redis": "^5.2.0"
   }
 }
