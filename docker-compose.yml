@@ -20,6 +20,8 @@ services:
     command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=socket01
+    links:
+      - redis
 
   socket02:
     build:
@@ -32,3 +34,9 @@ services:
     command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=socket02
+    links:
+      - redis
+  redis:
+    image: redis:3.2
+    volumes:
+      - ./redis-data/:/data
