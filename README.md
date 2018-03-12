@@ -6,7 +6,34 @@
 
 Build nginx and node docker images
 
+### Setup local kubernetes
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+
+Everything assumes host machine is linux amd64
+
+Ensure you have virtualbox installed
+
+Get kubectl
+```bash
+cd ~/bin/
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x kubectl
+```
+
+Get minikube
+```bash
+curl -O -J -L https://github.com/kubernetes/minikube/releases/download/v0.25.0/minikube-linux-amd64 -o minikube
+chmod +x minikube
+```
+
+[Start kube cluster](https://kubernetes.io/docs/getting-started-guides/minikube/#quickstart)
+```bash
+minikube start
+```
+
+### Docker compose (replace with kubernetes)
 Get docker-compose from [here](https://docs.docker.com/compose/install/) if you don't want sudo some random script...
+Build nginx and node docker images
 ```bash
 sudo ./docker-compose build
 ```
