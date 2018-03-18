@@ -4,6 +4,7 @@ services:
     build:
       context:  .
       dockerfile: Dockerfile-nginx
+    image: loadbalancesocketio_loadbalancer:latest
     ports:
       - "8080:80"
     volumes:
@@ -15,17 +16,22 @@ services:
     links:
       - socket01
       - socket02
+      - socket03
+      - socket04
+      - socket05
       - fpm
 
   socket01:
     build:
       context:  .
       dockerfile: Dockerfile-socketio
+    image: loadbalancesocketio_socket:latest
     volumes:
-      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+      - ./sockets:/app/sockets
     expose:
       - "3000"
-    command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=SocketServer01
     links:
@@ -35,11 +41,13 @@ services:
     build:
       context:  .
       dockerfile: Dockerfile-socketio
+    image: loadbalancesocketio_socket:latest
     volumes:
-      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+      - ./sockets:/app/sockets
     expose:
       - "3000"
-    command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=SocketServer02
     links:
@@ -49,11 +57,13 @@ services:
     build:
       context:  .
       dockerfile: Dockerfile-socketio
+    image: loadbalancesocketio_socket:latest
     volumes:
-      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+      - ./sockets:/app/sockets
     expose:
       - "3000"
-    command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=SocketServer03
     links:
@@ -63,11 +73,13 @@ services:
     build:
       context:  .
       dockerfile: Dockerfile-socketio
+    image: loadbalancesocketio_socket:latest
     volumes:
-      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+      - ./sockets:/app/sockets
     expose:
       - "3000"
-    command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=SocketServer04
     links:
@@ -77,11 +89,13 @@ services:
     build:
       context:  .
       dockerfile: Dockerfile-socketio
+    image: loadbalancesocketio_socket:latest
     volumes:
-      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./package.json:/app/package.json
+      - ./sockets:/app/sockets
     expose:
       - "3000"
-    command: ["node", "/app/sockets/start.js"]
     environment:
       - LABEL=SocketServer05
     links:
