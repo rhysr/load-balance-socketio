@@ -11,13 +11,6 @@ Get docker-compose from [here](https://docs.docker.com/compose/install/) if you 
 sudo ./docker-compose build
 ```
 
-Install package dependencies
-You'll need [yarn](https://yarnpkg.com/lang/en/docs/install/)
-```bash
-./composer.phar install --prefer-dist
-yarn install
-```
-
 Start nginx, php fpm, redis, and node socketio containers
 ```bash
 sudo ./docker-compose up
