@@ -110,3 +110,7 @@ services:
         - ./public:/var/www/html/public
         - ./src:/var/www/html/src
         - ./vendor:/var/www/html/vendor
+  prometheus:
+    image: prom/prometheus:v2.2.1
+    ports:
+      - "9090:9090"
